@@ -1,5 +1,20 @@
 'use strict';
 
+const About = { template: '<h2>About Page</h2>' };
+const Tools = { template: '<h2>Tools Page</h2>' };
+const Projects = { template: '<h2>Projects</h2>' };
+
+const routes = [
+  { path: '/', component: About },
+  { path: '/tools', component: Tools },
+  { path: '/projects', component: Projects }
+];
+
+const router = VueRouter.createRouter({
+  history: VueRouter.createWebHistory(),
+  routes,
+});
+
 const app = Vue.createApp({
   data() {
     return {
@@ -10,11 +25,9 @@ const app = Vue.createApp({
 });
 
 app.component('my-header', {
-  props: [],
-  data() {
-    return {
-      
-    }
+  setup() {
+  
+    return {}
   },
   template: `  <header class="header">
           <div class="container">
@@ -28,18 +41,16 @@ app.component('my-header', {
                 <button class="menu__btn"></button>
                 
                 <div class="menu__content">
-                  <a href="#"> About </a>
-                  <a href="#"> Used tools </a>
-                  <a href="#"> Projects </a>
+                  <router-link to="/"> About </router-link>
+                  <router-link to="/tools"> Used tools </router-link>
+                  <router-link to="/projects"> Projects </router-link>
                   
                 </div>
               </nav>
             </div>
           </div>
-        </header>`,
-  methods: {
-
-  }
+        </header>`
 });
 
+app.use(router);
 app.mount('#app');
