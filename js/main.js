@@ -1,5 +1,24 @@
 'use strict';
 
+const messages = {
+  en: {
+    menu: {
+      about: 'About'
+    }
+  },
+  ua: {
+    menu: {
+      about: 'Про мене'
+    }
+  }
+};
+
+const i18n = VueI18n.createI18n({
+  locale: 'en',
+  fallbackLocale: 'ua',
+  messages,
+});
+
 const About = { template: '<h2>About Page</h2>' };
 const Tools = { template: '<h2>Tools Page</h2>' };
 const Projects = { template: '<h2>Projects</h2>' };
@@ -41,7 +60,7 @@ app.component('my-header', {
                 <button class="menu__btn"></button>
                 
                 <div class="menu__content">
-                  <router-link to="/"> About </router-link>
+                  <router-link to="/"> {{ $t("menu.about") }} </router-link>
                   <router-link to="/tools"> Used tools </router-link>
                   <router-link to="/projects"> Projects </router-link>
                   
@@ -53,4 +72,5 @@ app.component('my-header', {
 });
 
 app.use(router);
+app.use(i18n);
 app.mount('#app');
