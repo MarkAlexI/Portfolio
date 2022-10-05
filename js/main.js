@@ -2,20 +2,21 @@
 
 const messages = {
   en: {
-    menu: {
-      about: 'About'
-    }
+    "menu.about": 'About',
+    "menu.tools": 'Used tools',
+    "menu.projects": 'Projects'
   },
   ua: {
-    menu: {
-      about: 'Про мене'
-    }
+    "menu.about": 'Про мене',
+    "menu.tools": 'Інструменти',
+    "menu.projects": 'Проекти'
   }
 };
 
 const i18n = VueI18n.createI18n({
-  locale: 'en',
-  fallbackLocale: 'ua',
+  legacy: false,
+  locale: 'ua',
+  fallbackLocale: 'en',
   messages,
 });
 
@@ -40,29 +41,27 @@ const app = Vue.createApp({
 
     }
   },
-
 });
 
 app.component('my-header', {
-  setup() {
-  
-    return {}
+  data() { return {} },
+  methods: { 
   },
   template: `  <header class="header">
           <div class="container">
             <div class="header__inner">
               <div class="logo">
-                <a class="logo__link" href="#">
+                <router-link to="/" class="logo__link">
                   <img class="logo__link-img" src="images/logo.png" alt="logo">
-                </a>
+                </router-link>
               </div>
               <nav class="menu">
                 <button class="menu__btn"></button>
                 
                 <div class="menu__content">
                   <router-link to="/"> {{ $t("menu.about") }} </router-link>
-                  <router-link to="/tools"> Used tools </router-link>
-                  <router-link to="/projects"> Projects </router-link>
+                  <router-link to="/tools"> {{ $t("menu.tools") }} </router-link>
+                  <router-link to="/projects"> {{ $t("menu.projects") }} </router-link>
                   
                 </div>
               </nav>
