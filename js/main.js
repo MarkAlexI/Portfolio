@@ -4,12 +4,18 @@ const messages = {
   en: {
     "menu.about": 'About',
     "menu.tools": 'Used tools',
-    "menu.projects": 'Projects'
+    "menu.projects": 'Projects',
+    "page404.notFound": 'Page Not Found',
+    "page404.info": 'Return on main page',
+    "page404.back": 'Go Home'
   },
   ua: {
     "menu.about": 'Про мене',
     "menu.tools": 'Інструменти',
-    "menu.projects": 'Проекти'
+    "menu.projects": 'Проекти',
+    "page404.notFound": 'Сторінку не знайдено',
+    "page404.info": 'Повернутись на головну сторінку',
+    "page404.back": 'На головну'
   }
 };
 
@@ -23,11 +29,15 @@ const i18n = VueI18n.createI18n({
 const About = { template: '<h2>About Page</h2>' };
 const Tools = { template: '<h2>Tools Page</h2>' };
 const Projects = { template: '<h2>Projects</h2>' };
+const NotFound = { template: `<h2>{{ $t("page404.notFound") }}</h2>
+     <p>{{ $t("page404.info") }}</p>
+     <router-link to="/">&lt; {{ $t("page404.back") }} &gt;</router-link>` };
 
 const routes = [
   { path: '/', component: About },
   { path: '/tools', component: Tools },
-  { path: '/projects', component: Projects }
+  { path: '/projects', component: Projects },
+  { path: '/:pathMatch(.*)*', component: NotFound }
 ];
 
 const router = VueRouter.createRouter({
@@ -47,7 +57,7 @@ app.component('my-header', {
   data() { return {} },
   methods: { 
   },
-  template: `  <header class="header">
+  template: `<header class="header">
           <div class="container">
             <div class="header__inner">
               <div class="logo">
