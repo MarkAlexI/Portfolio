@@ -21,6 +21,48 @@ h6 {
   margin: 0px;
 }
 
+.flag {
+  height: 35px;
+  padding-top: 3px;
+}
+
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 1s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
+
+.dropdown {
+  position: fixed;
+  right: 80px;
+  top: 20px;
+  display: block;
+  color: black;
+}
+
+.dropdown__btn {
+  border-radius: 3px;
+  border: none;
+}
+
+.dropdown__menu {
+  position: absolute;
+  right: 0;
+  background-color: #fff;
+  padding: 2px;
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.30), 0 14px 11px rgba(0, 0, 0, 0.22);
+}
+
+.dropdown__item.active {
+  display: block;
+  background-color: lightskyblue;
+  font-weight: 900;
+}
+
 ul,
 li {
   margin: 0px;

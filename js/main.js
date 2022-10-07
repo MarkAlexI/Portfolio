@@ -2,6 +2,8 @@
 
 const messages = {
   en: {
+    "dropdown.en": 'English',
+    "dropdown.ua": 'Ukrainian',
     "menu.about": 'About',
     "menu.tools": 'Used tools',
     "menu.projects": 'Projects',
@@ -10,6 +12,8 @@ const messages = {
     "page404.back": 'Go Home'
   },
   ua: {
+    "dropdown.en": 'Англійська',
+    "dropdown.ua": 'Українська',
     "menu.about": 'Про мене',
     "menu.tools": 'Інструменти',
     "menu.projects": 'Проекти',
@@ -55,8 +59,7 @@ const app = Vue.createApp({
 
 app.component('my-header', {
   data() { return {} },
-  methods: { 
-  },
+  methods: {},
   template: `<header class="header">
           <div class="container">
             <div class="header__inner">
@@ -65,6 +68,7 @@ app.component('my-header', {
                   <img class="logo__link-img" src="images/logo.png" alt="logo">
                 </router-link>
               </div>
+              <slot></slot>
               <nav class="menu">
                 <button class="menu__btn"></button>
                 
@@ -78,6 +82,47 @@ app.component('my-header', {
             </div>
           </div>
         </header>`
+});
+
+app.component('drop-down-langs', {
+  data() {
+    return {
+      selectedLanguage: 'ua',
+      isDropdownOpened: false
+    }
+  },
+  template: `<div class="dropdown">
+    <button class="dropdown__btn" @click="toggleDropdown">
+      <img :src="myImageSource" :key="selectedLanguage" class="flag"/>
+    </button>
+    <transition>
+      <div class="dropdown__menu" v-if="isDropdownOpened">
+        <a href="#" class="dropdown__item" :class="selectedLanguage === 'en' ? 'active': ''" @click.prevent="changeLanguage('en')">
+          <img src="../images/us.svg" class="flag" /> {{ $t("dropdown.en") }}
+        </a>
+        <a href="#" class="dropdown__item" :class="selectedLanguage === 'ua' ? 'active': ''" @click.prevent="changeLanguage('ua')">
+          <img src="../images/ua.svg" class="flag" /> {{ $t("dropdown.ua") }}
+        </a>
+      </div>
+    </transition>
+  </div>`,
+  computed: {
+    myImageSource() {
+      return this.selectedLanguage === 'en' ? '../images/us.svg' : '../images/ua.svg';
+    }
+  },
+  methods: {
+    changeLanguage(locale) {
+      this.$i18n.locale = locale;
+      this.selectedLanguage = locale;
+      this.isDropdownOpened = false;
+    },
+    toggleDropdown() {
+      this.isDropdownOpened = !this.isDropdownOpened;
+      
+      setTimeout(() => this.isDropdownOpened = false, 3000);
+    }
+  }
 });
 
 app.use(router);
