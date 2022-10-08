@@ -7,6 +7,9 @@ const messages = {
     "menu.about": 'About',
     "menu.tools": 'Used tools',
     "menu.projects": 'Projects',
+    "tools.title": 'Used tools',
+    "tools.descr": 'From idea to fantastic and incredible result.',
+    "tools.text": 'Qwerty uiop asd fgh jklzx cvb nm wrty vgfhhj bj nk.',
     "page404.notFound": 'Page Not Found',
     "page404.info": 'Return on main page',
     "page404.back": 'Go Home'
@@ -17,6 +20,9 @@ const messages = {
     "menu.about": 'Про мене',
     "menu.tools": 'Інструменти',
     "menu.projects": 'Проекти',
+    "tools.title": 'Використовувані інструменти',
+    "tools.descr": 'Заглушка. Допрацювати текст.',
+    "tools.text": 'В роботі використовую різні інструменти - Webpack, ESLint, TS, etc.',
     "page404.notFound": 'Сторінку не знайдено',
     "page404.info": 'Повернутись на головну сторінку',
     "page404.back": 'На головну'
@@ -31,7 +37,19 @@ const i18n = VueI18n.createI18n({
 });
 
 const About = { template: '<h2>About Page</h2>' };
-const Tools = { template: '<h2>Tools Page</h2>' };
+const Tools = {
+  template: `<section class="tools">
+      <div class="container">
+        <div class="tools__inner">
+          <div class="tools__head">
+            <h4 class="tools__title title">{{ $t("tools.title") }}</h4>
+            <p class="tools__descr">{{ $t("tools.descr") }}</p>
+            <p class="tools__text">{{ $t("tools.text") }}</p>
+          </div>
+        </div>
+      </div>
+    </section>`
+};
 const Projects = { template: '<h2>Projects</h2>' };
 const NotFound = { template: `<h2>{{ $t("page404.notFound") }}</h2>
      <p>{{ $t("page404.info") }}</p>
