@@ -10,6 +10,7 @@ const messages = {
     "tools.title": 'Used tools',
     "tools.descr": 'From idea to fantastic and incredible result.',
     "tools.text": 'Qwerty uiop asd fgh jklzx cvb nm wrty vgfhhj bj nk.',
+    "tool1.text": 'Use webpack',
     "page404.notFound": 'Page Not Found',
     "page404.info": 'Return on main page',
     "page404.back": 'Go Home'
@@ -23,6 +24,7 @@ const messages = {
     "tools.title": 'Використовувані інструменти',
     "tools.descr": 'Заглушка. Допрацювати текст.',
     "tools.text": 'В роботі використовую різні інструменти - Webpack, ESLint, TS, etc.',
+    "tool1.text": 'Використовую webpack',
     "page404.notFound": 'Сторінку не знайдено',
     "page404.info": 'Повернутись на головну сторінку',
     "page404.back": 'На головну'
@@ -38,6 +40,11 @@ const i18n = VueI18n.createI18n({
 
 const About = { template: '<h2>About Page</h2>' };
 const Tools = {
+  data() {
+     return {
+       toolsList: [{text: 'tool1.text', link: '#'}]
+     }
+  },
   template: `<section class="tools">
       <div class="container">
         <div class="tools__inner">
@@ -46,6 +53,16 @@ const Tools = {
             <p class="tools__descr">{{ $t("tools.descr") }}</p>
             <p class="tools__text">{{ $t("tools.text") }}</p>
           </div>
+        
+          <div v-for="i in toolsList" class="tools__item">
+            <div class="tools__item-inner">
+              <img class="tools__item-img" src="images/logo.png" alt="serv" />
+              <h6 class="tools__item-title">{{ $t(i.text) }}</h6>
+              <p class="tools__item-text">More details...</p>
+              <a class="tools__item-link" href="#">{{ i.link }}</a>
+            </div>
+          </div>
+            
         </div>
       </div>
     </section>`
