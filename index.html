@@ -23,7 +23,12 @@
     <my-header>
       <drop-down-langs></drop-down-langs>
     </my-header>
-    <router-view></router-view>
+    
+    <router-view v-slot="{ Component }">
+      <transition name="moveInUp">
+        <component :is="Component" />
+      </transition>
+    </router-view>
   </div>
 </body>
 
