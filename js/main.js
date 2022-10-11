@@ -42,7 +42,10 @@ const About = { template: '<h2>About Page</h2>' };
 const Tools = {
   data() {
      return {
-       toolsList: [{text: 'tool1.text', link: '#'}]
+       toolsList: [
+         {text: 'tool1.text', link: '#'},
+         {text: 'tool1.text', link: '@'}
+       ]
      }
   },
   template: `<section class="tools">
@@ -54,12 +57,14 @@ const Tools = {
             <p class="tools__text">{{ $t("tools.text") }}</p>
           </div>
         
-          <div v-for="i in toolsList" class="tools__item">
-            <div class="tools__item-inner">
-              <img class="tools__item-img" src="images/logo.png" alt="serv" />
-              <h6 class="tools__item-title">{{ $t(i.text) }}</h6>
-              <p class="tools__item-text">More details...</p>
-              <a class="tools__item-link" href="#">{{ i.link }}</a>
+          <div class="tools__items">
+            <div v-for="i in toolsList" class="tools__item">
+              <div class="tools__item-inner">
+                <img class="tools__item-img" src="images/logo.png" alt="serv" />
+                <h6 class="tools__item-title">{{ $t(i.text) }}</h6>
+                <p class="tools__item-text">More details...</p>
+                <a class="tools__item-link" href="#">{{ i.link }}</a>
+              </div>
             </div>
           </div>
             
@@ -67,7 +72,40 @@ const Tools = {
       </div>
     </section>`
 };
-const Projects = { template: '<h2>Projects</h2>' };
+const Projects = {
+  data() {
+    return {
+      projectsList: [
+        {text: 'ReadAll', link: 'https:////markalexi.github.io//Calculator//'}
+      ]
+    }
+  },
+  template: `<section class="project">
+      <div class="container">
+        <h4 class="project__title title">
+          Projects
+        </h4>
+        
+        <div class="project__items">
+          <div v-for="i in projectsList" class="project__item">
+            <div class="project__item-img" style="background-image: url(images/logo.png);">
+              <div class="project__item-inner">
+                <a class="project__item-info" href="#">
+                  <img src="images/logo.png" alt="images/logo.png">
+                </a>
+                <a class="project__item-search" href="#">
+                  <img src="images/logo.png" alt="images/logo.png">
+                </a>
+              </div>
+            </div>
+            <a class="project__item-link" href="#">{{ i.text }}</a>
+          </div>
+        </div>
+        
+      </div>
+    </section>`
+};
+
 const NotFound = {
   template: `<div class="container">
     <h2>{{ $t("page404.notFound") }}</h2>
@@ -162,6 +200,12 @@ app.component('drop-down-langs', {
       setTimeout(() => this.isDropdownOpened = false, 3000);
     }
   }
+});
+
+app.component('my-footer', {
+  template: `<footer>
+    <p>MarkAlexI 2022 © Copyright</p>
+  </footer>`
 });
 
 app.use(router);
