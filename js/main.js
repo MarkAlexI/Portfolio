@@ -38,7 +38,25 @@ const i18n = VueI18n.createI18n({
   messages,
 });
 
-const About = { template: '<h2>About Page</h2>' };
+const About = {
+  template: `<section class="call">
+    <div class="container">
+      <div class="call__inner">
+        <div class="call__box">
+          <h5 class="call__title">Modern JS</h5>
+          <p class="call__text">ECMAScript 2022 and more. Codewars, Github and Stackoverflow.</p>
+        </div>
+        <button @click="sendMail" class="call__btn">Mail me</button>
+      </div>
+    </div>
+  </section>`,
+  methods: {
+    sendMail() {
+      window.open('mailto: aacsmi06@gmail.com?subject=Vacancy&body=How do you do');
+    }
+  }
+};
+
 const Tools = {
   data() {
      return {
@@ -76,7 +94,7 @@ const Projects = {
   data() {
     return {
       projectsList: [
-        {text: 'ReadAll', link: 'https:////markalexi.github.io//Calculator//'}
+        {text: 'ReadAll', link: 'https://markalexi.github.io/Calculator/'}
       ]
     }
   },
@@ -90,10 +108,10 @@ const Projects = {
           <div v-for="i in projectsList" class="project__item">
             <div class="project__item-img" style="background-image: url(images/logo.png);">
               <div class="project__item-inner">
-                <a class="project__item-info" href="#">
+                <a class="project__item-info" href="https://markalexi.github.io/Calculator/">
                   <img src="images/logo.png" alt="images/logo.png">
                 </a>
-                <a class="project__item-search" href="#">
+                <a class="project__item-search" :href='i.link'>
                   <img src="images/logo.png" alt="images/logo.png">
                 </a>
               </div>

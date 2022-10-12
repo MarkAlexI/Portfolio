@@ -128,6 +128,41 @@ body {
   margin-left: 8px;
 }
 
+/*CALL*/
+.call {
+  background-color: #284084;
+  padding: 40px 0;
+  color: #fff;
+  text-align: center;
+}
+
+.call__title {
+  font-family:
+    /*Papyrus, Herculanum, fantasy;*/
+    'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 24px;
+  margin-bottom: 15px;
+}
+
+.call__text {
+  margin-bottom: 40px;
+}
+
+.call__btn {
+  padding: 16px 15px;
+  background-color: #F9F6E5;
+  color: #284084;
+  font-size: 18px;
+  font-family: "Herculanum", "Arial", "fantasy";
+  font-weight: 500;
+  border: none;
+  border-radius: 3px;
+  text-transform: uppercase;
+}
+
+/*MENU*/
 .menu {
   position: relative;
   display: inline-block;
