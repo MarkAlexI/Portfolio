@@ -145,6 +145,7 @@ const routes = [
   { path: '/', component: About },
   { path: '/tools', component: Tools },
   { path: '/projects', component: Projects },
+  { path: '/Portfolio/', component: About },
   { path: '/:pathMatch(.*)*', component: NotFound }
 ];
 
