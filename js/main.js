@@ -54,17 +54,24 @@ const About = {
     sendMail() {
       window.open('mailto: aacsmi06@gmail.com?subject=Vacancy&body=How do you do');
     }
+  },
+  mounted() {
+    const path = localStorage.getItem('path');
+    if (path) {
+      localStorage.removeItem('path');
+      this.$router.push(path);
+    }
   }
 };
 
 const Tools = {
   data() {
-     return {
-       toolsList: [
-         {text: 'tool1.text', link: '#'},
-         {text: 'tool1.text', link: '@'}
+    return {
+      toolsList: [
+        { text: 'tool1.text', link: '#' },
+        { text: 'tool1.text', link: '@' }
        ]
-     }
+    }
   },
   template: `<section class="tools">
       <div class="container">
@@ -94,7 +101,7 @@ const Projects = {
   data() {
     return {
       projectsList: [
-        {text: 'ReadAll', link: 'https://markalexi.github.io/Calculator/'}
+        { text: 'ReadAll', link: 'https://markalexi.github.io/Calculator/' }
       ]
     }
   },
@@ -214,7 +221,7 @@ app.component('drop-down-langs', {
     },
     toggleDropdown() {
       this.isDropdownOpened = !this.isDropdownOpened;
-      
+
       setTimeout(() => this.isDropdownOpened = false, 3000);
     }
   }
