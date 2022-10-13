@@ -59,7 +59,9 @@ const About = {
     const path = localStorage.getItem('path');
     if (path) {
       localStorage.removeItem('path');
-      this.$router.push(path);
+      this.$router.push(path === 'about' ? { path: '/' } : { path: path });
+    } else {
+      this.$router.push({ path: '/' });
     }
   }
 };
