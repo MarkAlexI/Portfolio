@@ -11,6 +11,8 @@ const messages = {
     "tools.descr": 'From idea to fantastic and incredible result.',
     "tools.text": 'Qwerty uiop asd fgh jklzx cvb nm wrty vgfhhj bj nk.',
     "tool1.text": 'Use webpack',
+    "projects.code": 'View code',
+    "projects.result": 'View result',
     "page404.notFound": 'Page Not Found',
     "page404.info": 'Return on main page',
     "page404.back": 'Go Home'
@@ -24,6 +26,8 @@ const messages = {
     "tools.title": 'Використовувані інструменти',
     "tools.descr": 'Заглушка. Допрацювати текст.',
     "tools.text": 'В роботі використовую різні інструменти - Webpack, ESLint, TS, etc.',
+    "projects.code": 'Перегляд коду',
+    "projects.result": 'Наживо',
     "tool1.text": 'Використовую webpack',
     "page404.notFound": 'Сторінку не знайдено',
     "page404.info": 'Повернутись на головну сторінку',
@@ -59,7 +63,7 @@ const About = {
     const path = localStorage.getItem('path');
     if (path) {
       localStorage.removeItem('path');
-      this.$router.push(path);
+      this.$router.push('/Portfolio' + path);
     } else {
       this.$router.push({ path: '/' });
     }
@@ -103,7 +107,7 @@ const Projects = {
   data() {
     return {
       projectsList: [
-        { text: 'ReadAll', link: 'https://markalexi.github.io/Calculator/' }
+        { name: 'Calculator', img: 'images/Calculator.png', code: 'https://github.com/MarkAlexI/Calculator', link: 'https://markalexi.github.io/Calculator/' }
       ]
     }
   },
@@ -115,17 +119,17 @@ const Projects = {
         
         <div class="project__items">
           <div v-for="i in projectsList" class="project__item">
-            <div class="project__item-img" style="background-image: url(images/logo.png);">
+            <div class="project__item-img" :style="'background-image: url(' + i.img + ');'">
               <div class="project__item-inner">
-                <a class="project__item-info" href="https://markalexi.github.io/Calculator/">
-                  <img src="images/logo.png" alt="images/logo.png">
+                <a class="project__item-info" :href='i.code'>
+                  <p class="project__item-code">{{ $t("projects.code") }}</p>
                 </a>
                 <a class="project__item-search" :href='i.link'>
-                  <img src="images/logo.png" alt="images/logo.png">
+                  <p class="project__item-site">{{ $t("projects.result") }}</p>
                 </a>
               </div>
             </div>
-            <a class="project__item-link" href="#">{{ i.text }}</a>
+            <a class="project__item-link" :href='i.link'>{{ i.name }}</a>
           </div>
         </div>
         
@@ -203,17 +207,17 @@ app.component('drop-down-langs', {
     <transition>
       <div class="dropdown__menu" v-if="isDropdownOpened">
         <a href="#" class="dropdown__item" :class="selectedLanguage === 'en' ? 'active': ''" @click.prevent="changeLanguage('en')">
-          <img src="../images/us.svg" class="flag" /> {{ $t("dropdown.en") }}
+          <img src="images/us.png" class="flag" /> {{ $t("dropdown.en") }}
         </a>
         <a href="#" class="dropdown__item" :class="selectedLanguage === 'ua' ? 'active': ''" @click.prevent="changeLanguage('ua')">
-          <img src="../images/ua.svg" class="flag" /> {{ $t("dropdown.ua") }}
+          <img src="images/ua.png" class="flag" /> {{ $t("dropdown.ua") }}
         </a>
       </div>
     </transition>
   </div>`,
   computed: {
     myImageSource() {
-      return this.selectedLanguage === 'en' ? '../images/us.svg' : '../images/ua.svg';
+      return this.selectedLanguage === 'en' ? 'images/us.png' : 'images/ua.png';
     }
   },
   methods: {
