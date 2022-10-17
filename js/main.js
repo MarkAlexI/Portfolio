@@ -10,7 +10,19 @@ const messages = {
     "tools.title": 'Used tools',
     "tools.descr": 'From idea to fantastic and incredible result.',
     "tools.text": 'Qwerty uiop asd fgh jklzx cvb nm wrty vgfhhj bj nk.',
-    "tool1.text": 'Use webpack',
+    "tool.text": 'Project with ',
+    "tool1.text": 'Love vanilla JS',
+    "tool2.text": 'Use webpack',
+    "tool3.text": 'Work with Vue 3',
+    "tool4.text": 'Accuracy with TypeScript',
+    "tool5.text": 'Backend on Node.js',
+    "tool6.text": 'Adaptive design, rubber layout',
+    "tool1.motto": 'Mighty JavaScript',
+    "tool2.motto": 'Comfortable work',
+    "tool3.motto": 'It\'ll be reactive',
+    "tool4.motto": 'Strong TS',
+    "tool5.motto": 'Fast and serious',
+    "tool6.motto": 'Mobile first',
     "projects.code": 'View code',
     "projects.result": 'View result',
     "page404.notFound": 'Page Not Found',
@@ -26,9 +38,21 @@ const messages = {
     "tools.title": 'Використовувані інструменти',
     "tools.descr": 'Заглушка. Допрацювати текст.',
     "tools.text": 'В роботі використовую різні інструменти - Webpack, ESLint, TS, etc.',
+    "tool.text": 'Проект з ',
+    "tool1.text": 'Люблю JS',
+    "tool2.text": 'Використовую webpack',
+    "tool3.text": 'Працюю з Vue 3',
+    "tool4.text": 'Точність з TypeScript',
+    "tool5.text": 'Бекенд на ноді',
+    "tool6.text": 'Адаптивний дизайн',
+    "tool1.motto": 'Гнучкість та повсюдність',
+    "tool2.motto": 'Зручний зборщик',
+    "tool3.motto": 'Зробимо все реактивним',
+    "tool4.motto": 'Суворий TS',
+    "tool5.motto": 'Швидкі проекти',
+    "tool6.motto": 'Mobile first',
     "projects.code": 'Перегляд коду',
     "projects.result": 'Наживо',
-    "tool1.text": 'Використовую webpack',
     "page404.notFound": 'Сторінку не знайдено',
     "page404.info": 'Повернутись на головну сторінку',
     "page404.back": 'На головну'
@@ -74,8 +98,12 @@ const Tools = {
   data() {
     return {
       toolsList: [
-        { text: 'tool1.text', link: '#' },
-        { text: 'tool1.text', link: '@' }
+        { text: 'tool1.text', motto: 'tool1.motto', link: 'https://markalexi.github.io/photoSlider/', name: 'js' },
+        { text: 'tool2.text', motto: 'tool2.motto', link: 'https://github.com/MarkAlexI/chatOnJS.git', name: 'webpack' },
+        { text: 'tool3.text', motto: 'tool3.motto', link: 'https://markalexi.github.io/toDoOnVue/', name: 'vue' },
+        { text: 'tool4.text', motto: 'tool4.motto', link: 'https://markalexi.github.io/readAll/', name: 'ts' },
+        { text: 'tool5.text', motto: 'tool5.motto', link: 'https://github.com/MarkAlexI/organizer.git', name: 'node-js' },
+        { text: 'tool6.text', motto: 'tool6.motto', link: 'https://markalexi.github.io/Portfolio/', name: 'css3' }
        ]
     }
   },
@@ -91,10 +119,10 @@ const Tools = {
           <div class="tools__items">
             <div v-for="i in toolsList" class="tools__item">
               <div class="tools__item-inner">
-                <img class="tools__item-img" src="images/logo.png" alt="serv" />
+                <img class="tools__item-img" :src="'images/' + i.name + '.png'" alt="used tool" />
                 <h6 class="tools__item-title">{{ $t(i.text) }}</h6>
-                <p class="tools__item-text">More details...</p>
-                <a class="tools__item-link" href="#">{{ i.link }}</a>
+                <p class="tools__item-text">{{ $t(i.motto) }}</p>
+                <a class="tools__item-link" :href="i.link">{{ $t("tool.text") + i.name }}</a>
               </div>
             </div>
           </div>
@@ -107,7 +135,7 @@ const Projects = {
   data() {
     return {
       projectsList: [
-        { name: 'Calculator', img: 'images/Calculator.png', code: 'https://github.com/MarkAlexI/Calculator', link: 'https://markalexi.github.io/Calculator/' }
+        { name: 'Calculator', img: 'images/calc.png', code: 'https://github.com/MarkAlexI/Calculator/', link: 'https://markalexi.github.io/Calculator/' }
       ]
     }
   },

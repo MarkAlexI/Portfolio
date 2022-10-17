@@ -290,6 +290,7 @@ body {
 
 .tools__item-link {
   color: #fff;
+  text-decoration: underline;
 }
 
 .tools__item-text,
