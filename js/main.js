@@ -89,7 +89,7 @@ const About = {
       localStorage.removeItem('path');
       this.$router.push('/Portfolio' + path);
     } else {
-      this.$router.push({ path: '/' });
+      this.$router.push({ path: '/Portfolio/' });
     }
   }
 };
