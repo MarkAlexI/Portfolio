@@ -119,7 +119,7 @@ const Tools = {
           <div class="tools__items">
             <div v-for="i in toolsList" class="tools__item">
               <div class="tools__item-inner">
-                <img class="tools__item-img" :src="'./images/' + i.name + '.png'" alt="used tool" />
+                <img class="tools__item-img" :src="'/Portfolio/images/' + i.name + '.png'" alt="used tool" />
                 <h6 class="tools__item-title">{{ $t(i.text) }}</h6>
                 <p class="tools__item-text">{{ $t(i.motto) }}</p>
                 <a class="tools__item-link" :href="i.link">{{ $t("tool.text") + i.name }}</a>
@@ -135,7 +135,7 @@ const Projects = {
   data() {
     return {
       projectsList: [
-        { name: 'Calculator', img: '../images/calc.png', code: 'https://github.com/MarkAlexI/Calculator/', link: 'https://markalexi.github.io/Calculator/' }
+        { name: 'Calculator', img: '/Portfolio/images/calc.png', code: 'https://github.com/MarkAlexI/Calculator/', link: 'https://markalexi.github.io/Calculator/' }
       ]
     }
   },
@@ -235,17 +235,17 @@ app.component('drop-down-langs', {
     <transition>
       <div class="dropdown__menu" v-if="isDropdownOpened">
         <a href="#" class="dropdown__item" :class="selectedLanguage === 'en' ? 'active': ''" @click.prevent="changeLanguage('en')">
-          <img src="./images/us.png" class="flag" /> {{ $t("dropdown.en") }}
+          <img src="/Portfolio/images/us.png" class="flag" /> {{ $t("dropdown.en") }}
         </a>
         <a href="#" class="dropdown__item" :class="selectedLanguage === 'ua' ? 'active': ''" @click.prevent="changeLanguage('ua')">
-          <img src="./images/ua.png" class="flag" /> {{ $t("dropdown.ua") }}
+          <img src="/Portfolio/images/ua.png" class="flag" /> {{ $t("dropdown.ua") }}
         </a>
       </div>
     </transition>
   </div>`,
   computed: {
     myImageSource() {
-      return this.selectedLanguage === 'en' ? './images/us.png' : './images/ua.png';
+      return this.selectedLanguage === 'en' ? '/Portfolio/images/us.png' : '/Portfolio/images/ua.png';
     }
   },
   methods: {
