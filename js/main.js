@@ -23,8 +23,14 @@ const messages = {
     "tool4.motto": 'Strong TS',
     "tool5.motto": 'Fast and serious',
     "tool6.motto": 'Mobile first',
+    "projects.title": 'Created projects',
     "projects.code": 'View code',
     "projects.result": 'View result',
+    "projects1.name": 'Calculator',
+    "projects2.name": 'Tetris',
+    "projects3.name": 'Paint',
+    "projects4.name": 'Calendar with notes',
+    "projects5.name": 'Converter of values',
     "page404.notFound": 'Page Not Found',
     "page404.info": 'Return on main page',
     "page404.back": 'Go Home'
@@ -51,8 +57,14 @@ const messages = {
     "tool4.motto": 'Суворий TS',
     "tool5.motto": 'Швидкі проекти',
     "tool6.motto": 'Mobile first',
+    "projects.title": 'Створені проекти',
     "projects.code": 'Перегляд коду',
     "projects.result": 'Наживо',
+    "projects1.name": 'Калькулятор',
+    "projects2.name": 'Тетріс',
+    "projects3.name": 'Малювалка',
+    "projects4.name": 'Календар з нотатками',
+    "projects5.name": 'Конвертер величин',
     "page404.notFound": 'Сторінку не знайдено',
     "page404.info": 'Повернутись на головну сторінку',
     "page404.back": 'На головну'
@@ -102,7 +114,7 @@ const Tools = {
         { text: 'tool2.text', motto: 'tool2.motto', link: 'https://github.com/MarkAlexI/chatOnJS.git', name: 'webpack' },
         { text: 'tool3.text', motto: 'tool3.motto', link: 'https://markalexi.github.io/toDoOnVue/', name: 'vue' },
         { text: 'tool4.text', motto: 'tool4.motto', link: 'https://markalexi.github.io/readAll/', name: 'ts' },
-        { text: 'tool5.text', motto: 'tool5.motto', link: 'https://github.com/MarkAlexI/organizer.git', name: 'node-js' },
+        { text: 'tool5.text', motto: 'tool5.motto', link: 'https://markalexi.github.io/organizer/', name: 'node-js' },
         { text: 'tool6.text', motto: 'tool6.motto', link: 'https://markalexi.github.io/Portfolio/', name: 'css3' }
        ]
     }
@@ -119,7 +131,7 @@ const Tools = {
           <div class="tools__items">
             <div v-for="i in toolsList" class="tools__item">
               <div class="tools__item-inner">
-                <img class="tools__item-img" :src="'/Portfolio/images/' + i.name + '.png'" alt="used tool" />
+                <img class="tools__item-img" :src="'/Portfolio/images/' + i.name + '.png'" :alt="'used tool ' + i.name" />
                 <h6 class="tools__item-title">{{ $t(i.text) }}</h6>
                 <p class="tools__item-text">{{ $t(i.motto) }}</p>
                 <a class="tools__item-link" :href="i.link">{{ $t("tool.text") + i.name }}</a>
@@ -135,29 +147,33 @@ const Projects = {
   data() {
     return {
       projectsList: [
-        { name: 'Calculator', img: '/Portfolio/images/calc.png', code: 'https://github.com/MarkAlexI/Calculator/', link: 'https://markalexi.github.io/Calculator/' }
+        { name: 'projects1.name', img: 'calc', code: 'Calculator' },
+        { name: 'projects2.name', img: 'tetris', code: 'simpleTetris' },
+        { name: 'projects3.name', img: 'paint', code: 'canvasPaint' },
+        { name: 'projects4.name', img: 'calendar', code: 'organizer' },
+        { name: 'projects5.name', img: 'converter', code: '' }
       ]
     }
   },
   template: `<section class="project">
       <div class="container">
         <h4 class="project__title title">
-          Projects
+          {{ $t("projects.title") }}
         </h4>
         
         <div class="project__items">
           <div v-for="i in projectsList" class="project__item">
-            <div class="project__item-img" :style="'background-image: url(' + i.img + ');'">
+            <div class="project__item-img" :style="'background-image: url(' + '/Portfolio/images/' + i.img + '.png' + ');'">
               <div class="project__item-inner">
-                <a class="project__item-info" :href='i.code'>
+                <a class="project__item-info" :href="'https://github.com/MarkAlexI/' + i.code + '/'">
                   <p class="project__item-code">{{ $t("projects.code") }}</p>
                 </a>
-                <a class="project__item-search" :href='i.link'>
+                <a class="project__item-search" :href="'https://markalexi.github.io/' + i.code + '/'">
                   <p class="project__item-site">{{ $t("projects.result") }}</p>
                 </a>
               </div>
             </div>
-            <a class="project__item-link" :href='i.link'>{{ i.name }}</a>
+            <a class="project__item-link" :href='i.link'>{{ $t(i.name) }}</a>
           </div>
         </div>
         
