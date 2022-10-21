@@ -151,7 +151,7 @@ const Projects = {
         { name: 'projects2.name', img: 'tetris', code: 'simpleTetris' },
         { name: 'projects3.name', img: 'paint', code: 'canvasPaint' },
         { name: 'projects4.name', img: 'calendar', code: 'organizer' },
-        { name: 'projects5.name', img: 'converter', code: '' }
+        { name: 'projects5.name', img: 'converter', code: 'tryConvert' }
       ]
     }
   },
