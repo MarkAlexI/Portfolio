@@ -166,6 +166,12 @@ body {
   text-transform: uppercase;
 }
 
+.call__inner img {
+  width: 98%;
+  max-width: 760px;
+  padding-bottom: 1rem;
+}
+
 /*MENU*/
 .menu {
   position: relative;

@@ -31,6 +31,7 @@ const messages = {
     "projects3.name": 'Paint',
     "projects4.name": 'Calendar with notes',
     "projects5.name": 'Converter of values',
+    "projects6.name": 'Tic-Tac-Toe',
     "page404.notFound": 'Page Not Found',
     "page404.info": 'Return on main page',
     "page404.back": 'Go Home'
@@ -65,6 +66,7 @@ const messages = {
     "projects3.name": 'Малювалка',
     "projects4.name": 'Календар з нотатками',
     "projects5.name": 'Конвертер величин',
+    "projects6.name": 'Хрестики-нулики',
     "page404.notFound": 'Сторінку не знайдено',
     "page404.info": 'Повернутись на головну сторінку',
     "page404.back": 'На головну'
@@ -82,6 +84,7 @@ const About = {
   template: `<section class="call">
     <div class="container">
       <div class="call__inner">
+      <img src="/Portfolio/images/photo.png" />
         <div class="call__box">
           <h5 class="call__title">Modern JS</h5>
           <p class="call__text">ECMAScript 2022 and more. Codewars, Github and Stackoverflow.</p>
@@ -151,7 +154,8 @@ const Projects = {
         { name: 'projects2.name', img: 'tetris', code: 'simpleTetris' },
         { name: 'projects3.name', img: 'paint', code: 'canvasPaint' },
         { name: 'projects4.name', img: 'calendar', code: 'organizer' },
-        { name: 'projects5.name', img: 'converter', code: 'tryConvert' }
+        { name: 'projects5.name', img: 'converter', code: 'tryConvert' },
+        { name: 'projects6.name', img: 'tictactoe', code: 'ticTacToeGame' }
       ]
     }
   },
@@ -250,10 +254,10 @@ app.component('drop-down-langs', {
     </button>
     <transition>
       <div class="dropdown__menu" v-if="isDropdownOpened">
-        <a href="#" class="dropdown__item" :class="selectedLanguage === 'en' ? 'active': ''" @click.prevent="changeLanguage('en')">
+        <a href="#" class="dropdown__item" :class="selectedLanguage === 'en' ? 'active' : ''" @click.prevent="changeLanguage('en')">
           <img src="/Portfolio/images/us.png" class="flag" /> {{ $t("dropdown.en") }}
         </a>
-        <a href="#" class="dropdown__item" :class="selectedLanguage === 'ua' ? 'active': ''" @click.prevent="changeLanguage('ua')">
+        <a href="#" class="dropdown__item" :class="selectedLanguage === 'ua' ? 'active' : ''" @click.prevent="changeLanguage('ua')">
           <img src="/Portfolio/images/ua.png" class="flag" /> {{ $t("dropdown.ua") }}
         </a>
       </div>
